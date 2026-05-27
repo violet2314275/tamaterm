@@ -10,7 +10,7 @@ def test_decay_does_not_apply_to_egg():
     pet.stage = Stage.EGG
     pet.last_decay = (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat()
     apply_decay(pet)
-    assert pet.stats.hunger == 80.0
+    assert pet.stats.hunger == 100.0
 
 
 def test_decay_does_not_apply_to_dead():
@@ -18,7 +18,7 @@ def test_decay_does_not_apply_to_dead():
     pet.mood = Mood.DEAD
     pet.last_decay = (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat()
     apply_decay(pet)
-    assert pet.stats.hunger == 80.0
+    assert pet.stats.hunger == 100.0
 
 
 def test_decay_reduces_stats():
@@ -26,12 +26,12 @@ def test_decay_reduces_stats():
     pet.stage = Stage.BABY
     pet.last_decay = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat()
     apply_decay(pet)
-    assert pet.stats.hunger < 80.0
+    assert pet.stats.hunger < 100.0
 
 
 def test_resolve_mood_normal():
     pet = PetState.new()
-    # Default stats (80,80,80,80) trigger HAPPY (happiness>=80, hunger>=60)
+    # Default stats (100,100,100,100) trigger HAPPY (happiness>=80, hunger>=60)
     assert resolve_mood(pet) == Mood.HAPPY
 
 

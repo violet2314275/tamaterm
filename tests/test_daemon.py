@@ -74,11 +74,14 @@ def test_daemon_signal_handler():
 def test_start_daemon_already_running():
     with patch("tamaterm.daemon.DAEMON_PID_FILE") as mock_pid_file, \
          patch("tamaterm.platform_compat.is_process_running", return_value=True), \
-         patch("tamaterm.platform_compat.start_background") as mock_bg:
+         patch("tamaterm.platform_compat.kill_process") as mock_kill, \
+         patch("tamaterm.platform_compat.start_background") as mock_bg, \
+         patch("time.sleep"):
         mock_pid_file.exists.return_value = True
         mock_pid_file.read_text.return_value = "  1234  "
         start_daemon()
-        mock_bg.assert_not_called()
+        mock_kill.assert_called_once_with(1234)
+        mock_bg.assert_called_once()
 
 
 def test_start_daemon_stale_pid():

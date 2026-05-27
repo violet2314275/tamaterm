@@ -5,9 +5,9 @@ from .state import PetState
 
 DECAY_RATES = {
     "hunger": -0.6,
-    "happiness": -0.4,
-    "energy": -0.3,
-    "hygiene": -0.25,
+    "happiness": -0.3,
+    "energy": -0.2,
+    "hygiene": -0.15,
 }
 
 NIGHT_MULTIPLIER = 1.2

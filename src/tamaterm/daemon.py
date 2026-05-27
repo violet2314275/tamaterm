@@ -62,7 +62,7 @@ class Daemon:
             pet.stage = new_stage
             logger.info("Evolved to %s!", new_stage.value)
 
-        frame = build_frame(pet)
+        frame = build_frame(pet, use_color=False)
         tmp = STATUS_FILE.with_suffix(".tmp")
         tmp.write_text(frame, encoding="utf-8")
         tmp.replace(STATUS_FILE)
@@ -92,12 +92,15 @@ class Daemon:
 
 def start_daemon():
     import os
-    from .platform_compat import is_process_running, start_background
+    from .platform_compat import is_process_running, kill_process, start_background
 
     if DAEMON_PID_FILE.exists():
         pid = int(DAEMON_PID_FILE.read_text().strip())
         if is_process_running(pid):
-            return
+            kill_process(pid)
+            import time
+            time.sleep(0.5)
+        DAEMON_PID_FILE.unlink(missing_ok=True)
 
     start_background(Daemon().run)
 

@@ -9,10 +9,10 @@ from .constants import DATA_DIR, PET_FILE, Stage, Mood, PetType
 
 @dataclass
 class Stats:
-    hunger: float = 80.0
-    happiness: float = 80.0
-    energy: float = 80.0
-    hygiene: float = 80.0
+    hunger: float = 100.0
+    happiness: float = 100.0
+    energy: float = 100.0
+    hygiene: float = 100.0
 
     def clamp(self) -> Stats:
         self.hunger = max(0.0, min(100.0, self.hunger))
