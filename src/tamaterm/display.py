@@ -12,7 +12,6 @@ GREEN = "\033[32m"
 YELLOW = "\033[33m"
 BLUE = "\033[34m"
 CYAN = "\033[36m"
-MAGENTA = "\033[35m"
 
 
 def color_for_value(value: float) -> str:
@@ -31,7 +30,6 @@ def color_for_mood(mood: Mood) -> str:
         Mood.HUNGRY: YELLOW,
         Mood.SAD: BLUE,
         Mood.SLEEPY: DIM,
-        Mood.SICK: MAGENTA,
     }
     return mapping.get(mood, "")
 
@@ -53,7 +51,6 @@ def mood_symbol(mood: Mood) -> str:
         Mood.SAD: "v",
         Mood.SLEEPY: "z",
         Mood.SLEEPING: "Z",
-        Mood.SICK: "!",
         Mood.DEAD: "x",
     }
     return mapping.get(mood, "*")

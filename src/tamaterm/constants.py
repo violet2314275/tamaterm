@@ -18,7 +18,6 @@ class Mood(Enum):
     SAD = "sad"
     SLEEPY = "sleepy"
     SLEEPING = "sleeping"
-    SICK = "sick"
     DEAD = "dead"
 
 

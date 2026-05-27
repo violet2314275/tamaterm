@@ -27,10 +27,10 @@ def test_get_art_returns_list():
 
 def test_get_art_falls_back_to_normal():
     _reset_registry()
-    # SICK has no registered art for any pet, should fall back to NORMAL
+    # SAD has no registered art for cat egg, should fall back to NORMAL
     art_normal = get_art(PetType.CAT, Stage.EGG, Mood.NORMAL)
-    art_sick = get_art(PetType.CAT, Stage.EGG, Mood.SICK)
-    assert art_normal == art_sick
+    art_sad = get_art(PetType.CAT, Stage.EGG, Mood.SAD)
+    assert art_normal == art_sad
 
 
 def test_get_art_returns_fallback_for_unknown():
