@@ -22,6 +22,11 @@ def apply_decay(pet: PetState, now: datetime | None = None) -> None:
     now = now or datetime.now(timezone.utc)
     last = datetime.fromisoformat(pet.last_decay)
     elapsed = (now - last).total_seconds()
+
+    if elapsed < 0:
+        pet.last_decay = now.isoformat()
+        return
+
     intervals = elapsed / DECAY_INTERVAL_SECONDS
 
     if intervals < 1.0:
