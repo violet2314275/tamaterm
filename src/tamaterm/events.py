@@ -25,6 +25,7 @@ class EventDetector:
     def __init__(self):
         self._last_commit_count = 0
         self._last_cpu_spike = False
+        self._last_memory_pressure = False
         self._last_branch = ""
 
     def detect_git_activity(self) -> Optional[EventEffect]:
@@ -87,11 +88,14 @@ class EventDetector:
         if not HAS_PSUTIL:
             return None
         mem = psutil.virtual_memory()
-        if mem.percent > 90:
+        is_pressure = mem.percent > 90
+        if is_pressure and not self._last_memory_pressure:
+            self._last_memory_pressure = True
             return EventEffect(
                 happiness=-2, energy=-3,
                 message=f"memory pressure ({mem.percent:.0f}%)",
             )
+        self._last_memory_pressure = is_pressure
         return None
 
     def detect_all(self) -> list[EventEffect]:

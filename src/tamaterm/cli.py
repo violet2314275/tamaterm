@@ -82,10 +82,11 @@ def sleep():
         click.echo(f"{pet.name} is dead.")
         return
     pet.mood = Mood.SLEEPING
+    pet.stats.energy = min(100, pet.stats.energy + 15)
     from datetime import datetime, timezone
     pet.last_interaction = datetime.now(timezone.utc).isoformat()
     pet.save()
-    click.echo(f"{pet.name} is now sleeping...")
+    click.echo(f"{pet.name} is now sleeping... Energy +15")
 
 
 @cli.command()
@@ -128,6 +129,8 @@ def revive():
 @cli.command()
 def doctor():
     """Check tamaterm installation health."""
+    from .platform_compat import is_process_running
+
     issues = []
     if not DATA_DIR.exists():
         issues.append("~/.tamaterm directory missing")
@@ -137,7 +140,10 @@ def doctor():
         issues.append("Status file missing. Daemon may not be running.")
     if DAEMON_PID_FILE.exists():
         pid = int(DAEMON_PID_FILE.read_text().strip())
-        click.echo(f"Daemon PID: {pid}")
+        if is_process_running(pid):
+            click.echo(f"Daemon PID: {pid}")
+        else:
+            issues.append(f"Daemon PID {pid} is not running (stale PID file). Run 'tamaterm start'")
     else:
         issues.append("Daemon not running. Run 'tamaterm start'")
     if issues:

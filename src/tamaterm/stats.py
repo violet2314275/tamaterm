@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from .constants import Mood, DECAY_INTERVAL_SECONDS
+from .constants import Mood, Stage, DECAY_INTERVAL_SECONDS
 from .state import PetState
 
 DECAY_RATES = {
@@ -71,6 +71,3 @@ def resolve_mood(pet: PetState) -> Mood:
         return Mood.SAD
 
     return Mood.NORMAL
-
-
-from .constants import Stage  # noqa: E402

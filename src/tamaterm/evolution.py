@@ -1,6 +1,6 @@
 from datetime import datetime, timezone, timedelta
 
-from .constants import Stage
+from .constants import Mood, Stage
 from .state import PetState
 
 STAGE_DURATIONS = {
@@ -37,6 +37,3 @@ def check_evolution(pet: PetState, now: datetime | None = None) -> Stage | None:
             return STAGE_ORDER[idx + 1]
 
     return None
-
-
-from .constants import Mood  # noqa: E402
