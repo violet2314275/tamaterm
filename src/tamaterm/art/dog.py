@@ -13,6 +13,63 @@ def dog_egg():
     ]
 
 
+@register_art(PetType.DOG, Stage.EGG, Mood.HAPPY)
+def dog_egg_happy():
+    return [
+        "    .---.    ",
+        "   /     \\   ",
+        "  |   *   |  ",
+        "  |       |  ",
+        "   '-----'   ",
+    ]
+
+
+@register_art(PetType.DOG, Stage.EGG, Mood.HUNGRY)
+def dog_egg_hungry():
+    return [
+        "    .---.    ",
+        "   /     \\   ",
+        "  |   ~   |  ",
+        "  |       |  ",
+        "   '-----'   ",
+    ]
+
+
+@register_art(PetType.DOG, Stage.EGG, Mood.SLEEPING)
+def dog_egg_sleeping():
+    return [
+        "    .---.    ",
+        "   /     \\   ",
+        "  |   -   |  ",
+        "  |       |  ",
+        "   '-----'   ",
+        "   z Z z     ",
+    ]
+
+
+@register_art(PetType.DOG, Stage.EGG, Mood.SAD)
+def dog_egg_sad():
+    return [
+        "    .---.    ",
+        "   /     \\   ",
+        "  |   .   |  ",
+        "  |       |  ",
+        "   '-----'   ",
+    ]
+
+
+@register_art(PetType.DOG, Stage.EGG, Mood.DEAD)
+def dog_egg_dead():
+    return [
+        "    .---.    ",
+        "   /     \\   ",
+        "  |   x   |  ",
+        "  |       |  ",
+        "   '-----'   ",
+        "     RIP     ",
+    ]
+
+
 @register_art_default(PetType.DOG, Stage.BABY)
 def dog_baby():
     return [
@@ -96,6 +153,29 @@ def dog_teen_dead():
     ]
 
 
+@register_art(PetType.DOG, Stage.TEEN, Mood.HUNGRY)
+def dog_teen_hungry():
+    return [
+        "   /\\    /\\   ",
+        "  ( o  . o )  ",
+        "   >   ~  <   ",
+        "   /|    |\\   ",
+        "  (_|    |_)  ",
+    ]
+
+
+@register_art(PetType.DOG, Stage.TEEN, Mood.SLEEPING)
+def dog_teen_sleeping():
+    return [
+        "   /\\    /\\   ",
+        "  ( -  . - )  ",
+        "   >   V  <   ",
+        "   /|    |\\   ",
+        "  (_|    |_)  ",
+        "    z Z z     ",
+    ]
+
+
 @register_art_default(PetType.DOG, Stage.ADULT)
 def dog_adult():
     return [
@@ -133,4 +213,44 @@ def dog_adult_dead():
         "  \\_)  (   )  (_/  ",
         "      (___)        ",
         "       RIP         ",
+    ]
+
+
+@register_art(PetType.DOG, Stage.ADULT, Mood.HUNGRY)
+def dog_adult_hungry():
+    return [
+        "   /\\       /\\    ",
+        "  / o\\     / o \\  ",
+        " ( ==  \\___/  == )",
+        "  )       ~     ( ",
+        " (    \\_____/    ) ",
+        "  \\_)  (   )  (_/  ",
+        "      (___)        ",
+    ]
+
+
+@register_art(PetType.DOG, Stage.ADULT, Mood.SLEEPING)
+def dog_adult_sleeping():
+    return [
+        "   /\\       /\\    ",
+        "  / -\\     / - \\  ",
+        " ( ==  \\___/  == )",
+        "  )              ( ",
+        " (    \\_____/    ) ",
+        "  \\_)  (   )  (_/  ",
+        "      (___)        ",
+        "      z Z z        ",
+    ]
+
+
+@register_art(PetType.DOG, Stage.ADULT, Mood.SAD)
+def dog_adult_sad():
+    return [
+        "   /\\       /\\    ",
+        "  / .\\     / . \\  ",
+        " ( ==  \\___/  == )",
+        "  )       v     ( ",
+        " (    \\_____/    ) ",
+        "  \\_)  (   )  (_/  ",
+        "      (___)        ",
     ]
