@@ -36,7 +36,8 @@ function global:prompt {
     if (Test-Path $statusFile) {
         $content = Get-Content $statusFile -Raw -ErrorAction SilentlyContinue
         if ($content) {
-            Write-Host $content -NoNewline
+            $clean = $content -replace '\x1b\[[0-9;]*m', ''
+            Write-Host $clean -NoNewline
             Write-Host ""
         }
     }
