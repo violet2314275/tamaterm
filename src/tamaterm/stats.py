@@ -4,13 +4,13 @@ from .constants import Mood, Stage, DECAY_INTERVAL_SECONDS
 from .state import PetState
 
 DECAY_RATES = {
-    "hunger": -2.5,
-    "happiness": -1.5,
-    "energy": -1.0,
-    "hygiene": -0.8,
+    "hunger": -0.6,
+    "happiness": -0.4,
+    "energy": -0.3,
+    "hygiene": -0.25,
 }
 
-NIGHT_MULTIPLIER = 1.5
+NIGHT_MULTIPLIER = 1.2
 
 
 def apply_decay(pet: PetState, now: datetime | None = None) -> None:

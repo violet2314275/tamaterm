@@ -7,7 +7,7 @@ STATUS_FILE = DATA_DIR / "status.txt"
 DAEMON_PID_FILE = DATA_DIR / "daemon.pid"
 LOG_FILE = DATA_DIR / "daemon.log"
 
-DECAY_INTERVAL_SECONDS = 180  # stats decay every 3 minutes
+DECAY_INTERVAL_SECONDS = 180  # stats decay every 3 minutes (~8-12h survival)
 DAEMON_TICK_SECONDS = 3
 
 
