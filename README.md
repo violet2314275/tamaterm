@@ -106,10 +106,31 @@ CLI (tamaterm feed/play/clean/sleep)
 | Memory > 90% | Energy -3, Happiness -2 |
 | Night (0-6am) | Auto-sleeps |
 
+## Development
+
+```bash
+# Clone and install in dev mode
+git clone https://github.com/violet2314275/tamaterm.git
+cd tamaterm
+pip install -e ".[dev]"
+
+# Run tests
+python -m pytest tests/ -v
+
+# Lint
+ruff check src/ tests/
+
+# Build package
+python -m build
+```
+
 ## Contributing
 
 Add a new pet! Create a file in `src/tamaterm/art/` with ASCII art for each
 stage and mood. See `art/cat.py` for the pattern.
+
+Each pet needs art for these moods at each stage (egg, baby, teen, adult):
+`NORMAL`, `HAPPY`, `HUNGRY`, `SAD`, `SLEEPING`, `DEAD`.
 
 ## License
 
