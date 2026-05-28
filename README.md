@@ -17,6 +17,8 @@ A virtual pet that lives in your terminal.
 └────────────────────────┘
 ```
 
+![demo](assets/demo.gif)
+
 ## What is this?
 
 tamaterm is a Tamagotchi-style virtual pet that lives in your terminal prompt.
